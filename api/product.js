@@ -14,6 +14,7 @@ async function getProduct(_, { id }) {
 }
 
 async function productAdd(_, { product }) {
+    const db = getDb();
     const newProduct = product;
     newProduct.id = await getNextSequence('products');
     const result = await db.collection('products').insertOne(product);
